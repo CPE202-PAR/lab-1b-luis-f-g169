@@ -13,12 +13,16 @@ class TestLab1b(unittest.TestCase):
         self.assertEqual(bin_search_iter(plist, 10), 3)
 
     def test_bin_search_iter_02(self) -> None:
-        tlist: List = None
+        tlist = None
         with self.assertRaises(ValueError):  # uses context manager for checking exception
             bin_search_iter(tlist, 5)
+    
+    def test_bin_search_iter_04(self) -> None:
+        tlist: List = [1, 2, 3, 4, 5, 6]
+        self.assertEqual(bin_search_iter(tlist, 10), None)
 
     def test_bin_searcg_rec(self) -> None:
-         tlist: List = None
+         tlist = None
          with self.assertRaises(ValueError):
               bin_search_rec(tlist, 5)
     
