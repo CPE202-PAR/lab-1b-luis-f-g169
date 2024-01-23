@@ -14,7 +14,7 @@ def bin_search_iter(int_list: Maybe_IntList, target: int) -> Maybe_Integer:
         raise ValueError
     low = 0
     high = len(int_list) - 1
-    while low < high:
+    while low <= high:
         mid = (high + low) // 2
         if int_list[mid] < target:  # If mid value is less than target, ignore left half
             low = mid + 1
@@ -39,4 +39,10 @@ def bin_search_rec(int_list: Maybe_IntList, target: int) -> Maybe_Integer:
 # Python List, number, number, number -> number or None
 def bin_search_rec_helper(int_list: List, target: int, low: int, high: int) -> Maybe_Integer:
     """ searches for target in int_list[low..high] and returns index if found"""
-    pass
+    mid = (high + low) // 2 
+    if int_list[mid] == target:
+        return mid
+    elif int_list[mid] < target:
+        return bin_search_rec_helper(int_list, target, mid + 1, high)
+    else:
+        return bin_search_rec_helper(int_list, target, low, mid-1)
